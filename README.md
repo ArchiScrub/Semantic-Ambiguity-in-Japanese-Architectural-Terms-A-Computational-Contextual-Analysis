@@ -1,0 +1,2 @@
+# Semantic-Ambiguity-in-Japanese-Architectural-Terms-A-Computational-Contextual-Analysis
+Public repository for a BERT-based contextual analysis of semantic ambiguity in Japanese architectural terms. It contains code, configs, outputs, logs, manifests, and figures for testing eight terms across FULL and CLEAN corpora through screening audit, polysemy recovery, register alignment, sense-aware interpretation, and an engawa boundary probe.
