@@ -1,8 +1,8 @@
 """Paper 4 pipeline.
 
 Architecture-first Paper 4 pipeline for a small screened set of Japanese architectural terms.
-Polysemy recovery → architecture-facing classification → sense-aware interpretation →
-bounded engawa theory-stress test under FULL/CLEAN corpus conditions.
+Contextual cluster recovery → architecture-facing register alignment → cluster-aware interpretation →
+bounded engawa concept-alignment hypothesis-stress test under FULL/CLEAN corpus conditions.
 """
 
 from __future__ import annotations
@@ -426,7 +426,7 @@ for idx, full_label in enumerate(CATEGORY_LABELS, start=1):
     code = _SHORT_LABELS_CFG.get(full_label, f"L{idx:02d}")
     CATEGORY_LABEL_SHORT[full_label] = str(code)
 
-# Concept definitions for the bounded engawa theory-stress test
+# Concept definitions for the bounded engawa hypothesis-stress test
 _RAW_CONCEPT_DEFS = cfg.get("paper4_concept_definitions", cfg.get("concept_definitions")) or {}
 CONCEPT_DEFINITIONS: Dict[str, List[str]] = {
     str(name): [str(w).strip() for w in (words or []) if str(w).strip()]
@@ -942,7 +942,7 @@ def w2v_vec(model: Word2Vec, text: str) -> Optional[np.ndarray]:
 
 
 # =========================
-# SECTION 7: POLYSEMY (RQ7)
+# SECTION 7: CONTEXTUAL CLUSTER RECOVERY
 # =========================
 def term_pattern(term: str):
     """Compile a Unicode-aware target-term pattern."""
@@ -1521,7 +1521,7 @@ def run_polysemy_for_mode(mode: str, term_list: List[str]) -> Dict[str, Dict[str
         rows_for_table: List[Dict[str, Any]] = []
 
         for term in term_list:
-            banner(f"POLYSEMY {mode} — {term} — {model_name}")
+            banner(f"CONTEXTUAL CLUSTER RECOVERY {mode} — {term} — {model_name}")
             x_mat, idxs, align_audit = contextual_embeddings_for(
                 term,
                 sentences,
@@ -2778,7 +2778,7 @@ def run_concept_alignment(mode_tag: str) -> None:
         fmt=".1f",
         cbar_kws={"label": "row-wise min-max scaled contrast (0=lowest, 100=highest)"},
     )
-    plt.title(f"Bounded engawa theory-stress test ({mode_tag}, row-wise min-max scaled contrast)")
+    plt.title(f"Bounded engawa hypothesis-stress test ({mode_tag}, row-wise min-max scaled contrast)")
     plt.xticks(rotation=30, ha="right")
     plt.tight_layout()
     _save_png_svg(
@@ -2797,7 +2797,7 @@ def run_concept_alignment(mode_tag: str) -> None:
         fmt=".3f",
         cbar_kws={"label": "cosine similarity"},
     )
-    plt.title(f"Bounded engawa theory-stress test ({mode_tag}, raw cosine)")
+    plt.title(f"Bounded engawa hypothesis-stress test ({mode_tag}, raw cosine)")
     plt.xticks(rotation=30, ha="right")
     plt.tight_layout()
     _save_png_svg(
@@ -3490,11 +3490,11 @@ MAIN_REGISTER_ALIASES: Dict[str, List[str]] = {
 }
 
 CURATED_PAPER_FIGURES: List[Tuple[str, str]] = [
-    ("figure1_screening_audit_table.png", "Table 1. Screening audit"),
-    ("figure2_polysemy_plate.png", "Plate 2. Polysemy recovery"),
-    ("figure3_architecture_facing_classification.png", "Figure 3. Architecture-facing register alignment"),
-    ("figure4_sense_aware_plate.png", "Plate 4. Sense-aware interpretation"),
-    ("figure5_engawa_bounded_test.png", "Figure 5. Bounded engawa theory-stress test"),
+    ("table1_screening_audit_table.png", "Table 1. Screening audit"),
+    ("figure2_contextual_cluster_recovery.png", "Figure 2. Contextual cluster recovery"),
+    ("figure3_architecture_facing_register_alignment.png", "Figure 3. Architecture-facing register alignment"),
+    ("figure4_cluster_aware_interpretation.png", "Figure 4. Cluster-aware interpretation"),
+    ("figure5_bounded_engawa_hypothesis_stress_test.png", "Figure 5. Bounded engawa hypothesis-stress test"),
 ]
 
 
@@ -3935,7 +3935,7 @@ def plot_screening_audit_table(out_path: Path) -> bool:
     fig.text(
         0.5,
         0.028,
-        "n = matched contextual instances, k = selected number of recovered sense clusters, span = proportion of candidate sentences with an explicit target-span match, stab = median bootstrap ARI stability. Green rows are retain decisions, pale amber rows are hold decisions.",
+        "n = matched contextual instances, k = selected number of recovered contextual clusters, span = proportion of candidate sentences with an explicit target-span match, stab = median bootstrap ARI stability. Green rows are retain decisions, pale amber rows are hold decisions.",
         ha="center",
         va="bottom",
         fontsize=8.2,
@@ -3946,7 +3946,7 @@ def plot_screening_audit_table(out_path: Path) -> bool:
     return True
 
 def plot_polysemy_plate(out_path: Path) -> bool:
-    """Render the chapter-facing polysemy plate with within-term FULL/CLEAN alignment."""
+    """Render the chapter-facing contextual cluster recovery figure with within-term FULL/CLEAN alignment."""
     model_name = _primary_model_key()
 
     term_payloads: List[Dict[str, Any]] = []
@@ -4075,7 +4075,7 @@ def plot_polysemy_plate(out_path: Path) -> bool:
             full_cue = _short_cue(payload["full_reps"], full_cluster_id)
             clean_cue = _short_cue(payload["clean_reps"], clean_cluster_id)
 
-            text_lines.append(f"S{slot_idx}  FULL: {full_cue}")
+            text_lines.append(f"C{slot_idx}  FULL: {full_cue}")
             text_lines.append(f"    CLEAN: {clean_cue}")
 
         ax_txt.text(
@@ -4090,11 +4090,15 @@ def plot_polysemy_plate(out_path: Path) -> bool:
 
     legend_slots = min(max_slots, 4)
     legend_handles = [
-        Line2D([0], [0], color=color_bank[(slot_idx - 1) % len(color_bank)], linewidth=8, label=f"S{slot_idx}")
+        Line2D([0], [0], color=color_bank[(slot_idx - 1) % len(color_bank)], linewidth=8, label=f"C{slot_idx}")
         for slot_idx in range(1, legend_slots + 1)
     ]
 
-    fig.suptitle("Plate 2. Polysemy recovery", fontsize=13, y=0.988)
+    fig.suptitle(
+        "Figure 2. Contextual cluster recovery across target terms",
+        fontsize=13,
+        y=0.988,
+    )
     if legend_handles:
         fig.legend(
             handles=legend_handles,
@@ -4106,7 +4110,7 @@ def plot_polysemy_plate(out_path: Path) -> bool:
     fig.text(
         0.5,
         0.012,
-        "Dark blue, light blue, and the other slot colours mark aligned recovered sense slots within the same term only. S1, S2, and so on mean sense slot 1, sense slot 2, and so on for that term. The same colour links the matched FULL and CLEAN segments for one slot, and the cue text gives one short representative sentence for each slot.",
+        "Bar length indicates matched-context count. Colored segments represent recovered contextual clusters aligned within each target term across FULL and CLEAN. C1, C2, and so on are aligned cluster slots within each term only; the cue text gives one short representative sentence for each slot.",
         ha="center",
         va="bottom",
         fontsize=8.6,
@@ -4184,7 +4188,7 @@ def plot_architecture_facing_classification(out_path: Path) -> bool:
         Line2D([0], [0], marker="s", color="w", markerfacecolor="#ff7f0e", markersize=7, label="CLEAN"),
     ]
     fig.suptitle(
-        "Figure 3. Architecture-facing register alignment across the five main registers",
+        "Figure 3. Architecture-facing register alignment across target terms",
         fontsize=13,
         y=0.988,
     )
@@ -4228,7 +4232,7 @@ def _aggregate_sense_rows_to_registers(sense_df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 def plot_sense_aware_plate(out_path: Path) -> bool:
-    """Render the chapter-facing sense-aware plate with count bars plus relative composition."""
+    """Render the chapter-facing cluster-aware interpretation figure with count bars plus relative register composition."""
     full_sense = _read_csv_optional(RES / "sa_similarity_per_sense_full.csv")
     clean_sense = _read_csv_optional(RES / "sa_similarity_per_sense_clean.csv")
     if full_sense.empty and clean_sense.empty:
@@ -4375,8 +4379,8 @@ def plot_sense_aware_plate(out_path: Path) -> bool:
         ax_count.set_xticks(count_ticks)
         ax_count.set_xticklabels([f"{int(round(v))}" for v in count_ticks], fontsize=8)
         ax_count.set_yticks(y_base)
-        ax_count.set_yticklabels([f"S{sense_pos}" for sense_pos in range(1, len(slots) + 1)], fontsize=8)
-        ax_count.set_xlabel("matched contexts per recovered sense", fontsize=8)
+        ax_count.set_yticklabels([f"C{cluster_pos}" for cluster_pos in range(1, len(slots) + 1)], fontsize=8)
+        ax_count.set_xlabel("matched contexts per recovered cluster", fontsize=8)
         ax_count.grid(axis="x", alpha=0.25)
         ax_count.spines["top"].set_visible(False)
         ax_count.spines["right"].set_visible(False)
@@ -4385,7 +4389,7 @@ def plot_sense_aware_plate(out_path: Path) -> bool:
         ax_comp.set_xticks([0, 25, 50, 75, 100])
         ax_comp.tick_params(axis="x", labelsize=8)
         ax_comp.set_yticks(y_base)
-        ax_comp.set_yticklabels([f"S{sense_pos}" for sense_pos in range(1, len(slots) + 1)], fontsize=8)
+        ax_comp.set_yticklabels([f"C{cluster_pos}" for cluster_pos in range(1, len(slots) + 1)], fontsize=8)
         ax_comp.grid(axis="x", alpha=0.25)
         ax_comp.spines["top"].set_visible(False)
         ax_comp.spines["right"].set_visible(False)
@@ -4399,7 +4403,7 @@ def plot_sense_aware_plate(out_path: Path) -> bool:
     ]
 
     fig.suptitle(
-        "Plate 4. Sense-aware interpretation, count bars plus within-sense relative register composition",
+        "Figure 4. Cluster-aware interpretation across target terms",
         fontsize=13,
         y=0.988,
     )
@@ -4413,7 +4417,7 @@ def plot_sense_aware_plate(out_path: Path) -> bool:
     fig.text(
         0.5,
         0.012,
-        "Left panel = raw matched-context count per recovered sense. Right panel = within-sense relative register composition scaled to 100. S1, S2, and so on are aligned recovered sense slots within each term only. Read each row left to right, then compare the upper FULL bar with the lower CLEAN bar for the same sense slot.",
+        "Left panel = raw matched-context count per recovered contextual cluster. Right panel = within-cluster relative register composition scaled to 100. C1, C2, and so on are aligned recovered cluster slots within each term only. Read each row left to right, then compare the upper FULL bar with the lower CLEAN bar for the same cluster slot.",
         ha="center",
         va="bottom",
         fontsize=8.4,
@@ -4507,7 +4511,7 @@ def plot_engawa_bounded_test(out_path: Path) -> bool:
     ax.set_yticks(y_positions)
     ax.set_yticklabels([concept_display.get(c, str(c).replace("_", " ")) for c in concept_order], fontsize=9)
     ax.set_xlabel("raw cosine similarity", fontsize=10)
-    ax.set_title("Figure 5. Bounded engawa theory-stress test", fontsize=13)
+    ax.set_title("Figure 5. Bounded engawa hypothesis-stress test", fontsize=13)
     ax.grid(axis="x", alpha=0.25)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -4787,15 +4791,16 @@ def build_all_result_plots() -> None:
     plot_dir.mkdir(parents=True, exist_ok=True)
 
     builders: List[Tuple[str, str, Any]] = [
-        ("figure1_screening_audit_table.png", "screening_audit_table", plot_screening_audit_table),
-        ("figure2_polysemy_plate.png", "polysemy_plate", plot_polysemy_plate),
+        ("table1_screening_audit_table.png", "screening_audit_table", plot_screening_audit_table),
+        ("figure2_contextual_cluster_recovery.png", "contextual_cluster_recovery", plot_polysemy_plate),
         (
-            "figure3_architecture_facing_classification.png",
-            "architecture_facing_classification",
+            "figure3_architecture_facing_register_alignment.png",
+            "architecture_facing_register_alignment",
             plot_architecture_facing_classification,
         ),
-        ("figure4_sense_aware_plate.png", "sense_aware_plate", plot_sense_aware_plate),
-        ("figure5_engawa_bounded_test.png", "engawa_bounded_test", plot_engawa_bounded_test),
+        ("figure4_cluster_aware_interpretation.png", "cluster_aware_interpretation", plot_sense_aware_plate),
+        ("figure5_bounded_engawa_hypothesis_stress_test.png", "bounded_engawa_hypothesis_stress_test",
+         plot_engawa_bounded_test),
     ]
 
     manifest_rows: List[Dict[str, Any]] = []
@@ -4827,14 +4832,11 @@ def build_all_result_plots() -> None:
 
 def build_master_figures_pdf() -> None:
     """
-    Combine the five curated Paper 4 chapter figures into one master PDF.
+    Combine the curated Paper 4 table and figures into one master PDF.
 
     This curated master excludes diagnostic t-SNE pages, generic heatmaps, k-score
     plots, and graph-heavy appendix material. Those files are still preserved on disk
     by their generating stages, but they are not pulled into the chapter-facing PDF.
-
-    Writes:
-        results_paper4/master/master_figures.pdf
     """
     plot_dir = MASTER / "plots"
     ordered_paths: List[Tuple[Path, str]] = [
@@ -4894,11 +4896,11 @@ def main() -> None:
     audit_clean_subset_relation()
 
     if RUN_POLYSEMY_FULL:
-        with Timer("Polysemy stage (FULL)"):
+        with Timer("Contextual cluster recovery stage (FULL)"):
             run_polysemy_for_mode("FULL", TARGETS)
 
     if RUN_POLYSEMY_CLEAN:
-        with Timer("Polysemy stage (CLEAN)"):
+        with Timer("Contextual cluster recovery stage (CLEAN)"):
             run_polysemy_for_mode("CLEAN", TARGETS)
 
     # per-corpus containers
@@ -4910,8 +4912,8 @@ def main() -> None:
     sa_flags_main: Optional[pd.DataFrame] = None
 
     if RUN_ZERO_SHOT:
-        banner("ZERO-SHOT — per model & consensus (FULL + CLEAN)")
-        with Timer("Zero-shot stage"):
+        banner("ARCHITECTURE-FACING REGISTER ALIGNMENT — zero-shot model space (FULL + CLEAN)")
+        with Timer("Architecture-facing register alignment stage"):
 
             # ---------- FULL ----------
             try:
@@ -5110,20 +5112,21 @@ def main() -> None:
                     )
 
     if RUN_SENSE_AWARE:
-        banner("SENSE-AWARE INTERPRETATION — via polysemy centroids (FULL + CLEAN)")
-        with Timer("Sense-aware stage"):
+        banner("CLUSTER-AWARE INTERPRETATION — via contextual cluster centroids (FULL + CLEAN)")
+        with Timer("Cluster-aware interpretation stage"):
             sa_flags_main = run_sense_aware_for_mode("FULL")
             run_sense_aware_for_mode("CLEAN")
 
-    # Agreement between zero-shot consensus flags and sense-aware flags
+    # Agreement between zero-shot register flags and cluster-aware flags
     if cons_flags is not None and sa_flags_main is not None:
         compare_flag_tables(cons_flags, sa_flags_main, "ZS_consensus", "SA_main")
 
-    # Engawa problem: bounded secondary theory-stress test kept outside master artifacts
+    # Bounded engawa concept-alignment hypothesis-stress test kept outside master artifacts
     if RUN_CONCEPT_ALIGNMENT:
-        banner("ENGAWA PROBLEM — bounded theory-stress test")
+        banner("BOUNDED ENGAWA HYPOTHESIS-STRESS TEST")
         for mode in ("FULL", "CLEAN"):
-            with Timer(f"Engawa problem ({mode}; boundary-edge / connector-flow / river-bank probe)"):
+            with Timer(
+                    f"Bounded engawa hypothesis-stress test ({mode}; boundary-edge / connector-flow / river-bank probe)"):
                 run_concept_alignment(mode)
 
     if RUN_GLOBAL_VIZ:
