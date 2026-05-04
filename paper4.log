@@ -1,90 +1,90 @@
-[19:54:52] INFO | 
+[00:27:07] INFO | 
 ============================== PAPER 4 — START ===============================
-[19:54:52] INFO | Torch device: cuda | cuda.is_available=True | cudnn.enabled=True
-[19:54:52] INFO | CUDA device: NVIDIA GeForce RTX 3080 Ti Laptop GPU | capability=(8, 6)
-[19:54:52] INFO | [det] cudnn.benchmark=False deterministic_algorithms=True
-[19:54:52] INFO | 
+[00:27:07] INFO | Torch device: cuda | cuda.is_available=True | cudnn.enabled=True
+[00:27:07] INFO | CUDA device: NVIDIA GeForce RTX 3080 Ti Laptop GPU | capability=(8, 6)
+[00:27:07] INFO | [det] cudnn.benchmark=False deterministic_algorithms=True
+[00:27:07] INFO | 
 ================================= P4 RUNTIME =================================
-[19:54:52] INFO | TARGETS (8): engawa, tokonoma, ma, mu, shakkei, doma, shōji, fusuma
-[19:54:52] INFO | CATEGORY LABELS (11): This term primarily refers to a material architectural element, spatial component, or physically bounded place., This term primarily refers to a conceptual, relational, or philosophical architectural idea., This term primarily refers to a virtual, perceived, atmospheric, or representational spatial condition., This term primarily refers to a mediating or threshold condition between domains, rather than a single fixed domain., This term primarily refers to a mixed condition in which material and virtual spatial logics remain simultaneously active., This term is strongly associated with boundary or edge conditions., This term is strongly associated with threshold, transition, or mediation., This term is strongly associated with liminality or in-between spatial status., This term is strongly associated with permeability, weak enclosure, or filtering., This term is strongly associated with display, ritual framing, or representational insertion., This term is strongly associated with visual incorporation, framing, borrowing, or appropriated scenery.
-[19:54:52] INFO | FULL BERT corpus: txt_corpus\BERT_Corpus.txt (sha256=d73baf30725b)
-[19:54:52] INFO | CLEAN BERT corpus: txt_corpus\BERT_Corpus_CL.txt (sha256=bcc095213e6f)
-[19:54:52] INFO | RUN_POLYSEMY_FULL=True | RUN_POLYSEMY_CLEAN=True | RUN_ZERO_SHOT=True | RUN_ZS_BOOTSTRAP=False | RUN_CONCEPT_BOOTSTRAP=True | RUN_SENSE_AWARE=True | RUN_CONCEPT_ALIGNMENT=True | RUN_GLOBAL_VIZ=False | RUN_STATS=True | RUN_REPORT=True
-[19:54:52] INFO | Copied config and filters to results dir
-[19:54:54] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:54:57] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:55:02] WARNING | CLEAN is not an exact sentence-level subset of FULL after normalization/splitting: 201 CLEAN sentences not found in FULL.
-[19:55:02] INFO | Polysemy stage (FULL) ...
-[19:55:05] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:55:05] INFO | 
-====================== POLYSEMY FULL — engawa — bert_ft ======================
-[19:55:28] INFO | 
-===================== POLYSEMY FULL — tokonoma — bert_ft =====================
-[19:55:35] INFO | 
-======================== POLYSEMY FULL — ma — bert_ft ========================
-[19:56:23] INFO | 
-======================== POLYSEMY FULL — mu — bert_ft ========================
-[19:56:30] INFO | 
-===================== POLYSEMY FULL — shakkei — bert_ft ======================
-[19:56:37] INFO | 
-======================= POLYSEMY FULL — doma — bert_ft =======================
-[19:56:41] INFO | 
-====================== POLYSEMY FULL — shōji — bert_ft =======================
-[19:57:02] INFO | 
-====================== POLYSEMY FULL — fusuma — bert_ft ======================
-[19:57:07] INFO | Polysemy stage (FULL) completed in 125.152s
-[19:57:07] INFO | Polysemy stage (CLEAN) ...
-[19:57:12] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:57:12] INFO | 
-===================== POLYSEMY CLEAN — engawa — bert_ft ======================
-[19:57:26] INFO | 
-==================== POLYSEMY CLEAN — tokonoma — bert_ft =====================
-[19:57:33] INFO | 
-======================= POLYSEMY CLEAN — ma — bert_ft ========================
-[19:58:20] INFO | 
-======================= POLYSEMY CLEAN — mu — bert_ft ========================
-[19:58:27] INFO | 
-===================== POLYSEMY CLEAN — shakkei — bert_ft =====================
-[19:58:34] INFO | 
-====================== POLYSEMY CLEAN — doma — bert_ft =======================
-[19:58:37] INFO | 
-====================== POLYSEMY CLEAN — shōji — bert_ft ======================
-[19:58:56] INFO | 
-===================== POLYSEMY CLEAN — fusuma — bert_ft ======================
-[19:59:00] INFO | Polysemy stage (CLEAN) completed in 112.972s
-[19:59:00] INFO | 
-============== ZERO-SHOT — per model & consensus (FULL + CLEAN) ==============
-[19:59:00] INFO | Zero-shot stage ...
-[19:59:01] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:59:03] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:59:04] INFO | Zero-shot stage completed in 4.243s
-[19:59:04] INFO | 
+[00:27:07] INFO | TARGETS (8): engawa, tokonoma, ma, mu, shakkei, doma, shōji, fusuma
+[00:27:07] INFO | CATEGORY LABELS (11): This term primarily refers to a material architectural element, spatial component, or physically bounded place., This term primarily refers to a conceptual, relational, or philosophical architectural idea., This term primarily refers to a virtual, perceived, atmospheric, or representational spatial condition., This term primarily refers to a mediating or threshold condition between domains, rather than a single fixed domain., This term primarily refers to a mixed condition in which material and virtual spatial logics remain simultaneously active., This term is strongly associated with boundary or edge conditions., This term is strongly associated with threshold, transition, or mediation., This term is strongly associated with liminality or in-between spatial status., This term is strongly associated with permeability, weak enclosure, or filtering., This term is strongly associated with display, ritual framing, or representational insertion., This term is strongly associated with visual incorporation, framing, borrowing, or appropriated scenery.
+[00:27:07] INFO | FULL BERT corpus: txt_corpus\BERT_Corpus.txt (sha256=d73baf30725b)
+[00:27:07] INFO | CLEAN BERT corpus: txt_corpus\BERT_Corpus_CL.txt (sha256=bcc095213e6f)
+[00:27:07] INFO | RUN_POLYSEMY_FULL=True | RUN_POLYSEMY_CLEAN=True | RUN_ZERO_SHOT=True | RUN_ZS_BOOTSTRAP=False | RUN_CONCEPT_BOOTSTRAP=True | RUN_SENSE_AWARE=True | RUN_CONCEPT_ALIGNMENT=True | RUN_GLOBAL_VIZ=False | RUN_STATS=True | RUN_REPORT=True
+[00:27:07] INFO | Copied config and filters to results dir
+[00:27:09] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:27:10] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:27:15] WARNING | CLEAN is not an exact sentence-level subset of FULL after normalization/splitting: 201 CLEAN sentences not found in FULL.
+[00:27:15] INFO | Contextual cluster recovery stage (FULL) ...
+[00:27:18] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:27:18] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY FULL — engawa — bert_ft =============
+[00:27:35] INFO | 
+=========== CONTEXTUAL CLUSTER RECOVERY FULL — tokonoma — bert_ft ============
+[00:27:42] INFO | 
+============== CONTEXTUAL CLUSTER RECOVERY FULL — ma — bert_ft ===============
+[00:28:27] INFO | 
+============== CONTEXTUAL CLUSTER RECOVERY FULL — mu — bert_ft ===============
+[00:28:32] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY FULL — shakkei — bert_ft ============
+[00:28:39] INFO | 
+============= CONTEXTUAL CLUSTER RECOVERY FULL — doma — bert_ft ==============
+[00:28:42] INFO | 
+============= CONTEXTUAL CLUSTER RECOVERY FULL — shōji — bert_ft =============
+[00:29:00] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY FULL — fusuma — bert_ft =============
+[00:29:04] INFO | Contextual cluster recovery stage (FULL) completed in 109.408s
+[00:29:04] INFO | Contextual cluster recovery stage (CLEAN) ...
+[00:29:07] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:29:07] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY CLEAN — engawa — bert_ft ============
+[00:29:20] INFO | 
+=========== CONTEXTUAL CLUSTER RECOVERY CLEAN — tokonoma — bert_ft ===========
+[00:29:26] INFO | 
+============== CONTEXTUAL CLUSTER RECOVERY CLEAN — ma — bert_ft ==============
+[00:30:12] INFO | 
+============== CONTEXTUAL CLUSTER RECOVERY CLEAN — mu — bert_ft ==============
+[00:30:17] INFO | 
+=========== CONTEXTUAL CLUSTER RECOVERY CLEAN — shakkei — bert_ft ============
+[00:30:23] INFO | 
+============= CONTEXTUAL CLUSTER RECOVERY CLEAN — doma — bert_ft =============
+[00:30:26] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY CLEAN — shōji — bert_ft =============
+[00:30:43] INFO | 
+============ CONTEXTUAL CLUSTER RECOVERY CLEAN — fusuma — bert_ft ============
+[00:30:47] INFO | Contextual cluster recovery stage (CLEAN) completed in 102.746s
+[00:30:47] INFO | 
+ ARCHITECTURE-FACING REGISTER ALIGNMENT — zero-shot model space (FULL + CLEAN) 
+[00:30:47] INFO | Architecture-facing register alignment stage ...
+[00:30:48] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:30:50] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:30:51] INFO | Architecture-facing register alignment stage completed in 4.574s
+[00:30:51] INFO | 
 ==== ENGAWA PROBLEM — bootstrap from contextual embeddings (FULL + CLEAN) ====
-[19:59:04] INFO | Engawa problem bootstrap (contexts) ...
-[19:59:05] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:59:05] INFO | Concept bootstrap using bert_ft for concepts (FULL)
-[19:59:08] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:59:08] INFO | Concept bootstrap using bert_ft for concepts (CLEAN)
-[19:59:08] INFO | Engawa problem bootstrap (contexts) completed in 4.348s
-[19:59:08] INFO | 
-===== SENSE-AWARE INTERPRETATION — via polysemy centroids (FULL + CLEAN) =====
-[19:59:08] INFO | Sense-aware stage ...
-[19:59:10] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:59:14] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:59:15] INFO | Sense-aware stage completed in 6.326s
-[19:59:15] INFO | Flag agreement ZS_consensus vs SA_main: raw=82/88 (0.932), Jaccard=0.455 over term×label cells
-[19:59:15] INFO | 
-================ ENGAWA PROBLEM — bounded theory-stress test =================
-[19:59:15] INFO | Engawa problem (FULL; boundary-edge / connector-flow / river-bank probe) ...
-[19:59:16] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
-[19:59:17] INFO | Engawa problem (FULL; boundary-edge / connector-flow / river-bank probe) completed in 2.168s
-[19:59:17] INFO | Engawa problem (CLEAN; boundary-edge / connector-flow / river-bank probe) ...
-[19:59:18] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
-[19:59:19] INFO | Engawa problem (CLEAN; boundary-edge / connector-flow / river-bank probe) completed in 2.185s
-[19:59:19] INFO | Wrote compact dashboard summary to results_paper4\summary_dashboard.csv
-[19:59:19] INFO | Wrote explicit screening decision table to results_paper4\screening_decision_table.csv
-[19:59:19] INFO | Wrote master long-form results CSV to results_paper4\master\master_results_long.csv
-[19:59:23] INFO | Wrote curated results plot manifest to results_paper4\master\results_plot_manifest.csv
-[19:59:29] INFO | Wrote curated master figures PDF to results_paper4\master\master_figures.pdf
-[19:59:29] INFO | 
+[00:30:51] INFO | Engawa problem bootstrap (contexts) ...
+[00:30:53] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:30:53] INFO | Concept bootstrap using bert_ft for concepts (FULL)
+[00:30:54] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:30:54] INFO | Concept bootstrap using bert_ft for concepts (CLEAN)
+[00:30:55] INFO | Engawa problem bootstrap (contexts) completed in 3.480s
+[00:30:55] INFO | 
+ CLUSTER-AWARE INTERPRETATION — via contextual cluster centroids (FULL + CLEAN) 
+[00:30:55] INFO | Cluster-aware interpretation stage ...
+[00:30:56] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:30:58] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:30:59] INFO | Cluster-aware interpretation stage completed in 3.716s
+[00:30:59] INFO | Flag agreement ZS_consensus vs SA_main: raw=82/88 (0.932), Jaccard=0.455 over term×label cells
+[00:30:59] INFO | 
+=================== BOUNDED ENGAWA HYPOTHESIS-STRESS TEST ====================
+[00:30:59] INFO | Bounded engawa hypothesis-stress test (FULL; boundary-edge / connector-flow / river-bank probe) ...
+[00:31:00] INFO | Loaded fine-tuned BERT for FULL from adapter root: models\FULL\bert_cased
+[00:31:01] INFO | Bounded engawa hypothesis-stress test (FULL; boundary-edge / connector-flow / river-bank probe) completed in 2.109s
+[00:31:01] INFO | Bounded engawa hypothesis-stress test (CLEAN; boundary-edge / connector-flow / river-bank probe) ...
+[00:31:02] INFO | Loaded fine-tuned BERT for CLEAN from adapter root: models\CLEAN\bert_cased
+[00:31:03] INFO | Bounded engawa hypothesis-stress test (CLEAN; boundary-edge / connector-flow / river-bank probe) completed in 2.017s
+[00:31:03] INFO | Wrote compact dashboard summary to results_paper4\summary_dashboard.csv
+[00:31:03] INFO | Wrote explicit screening decision table to results_paper4\screening_decision_table.csv
+[00:31:03] INFO | Wrote master long-form results CSV to results_paper4\master\master_results_long.csv
+[00:31:06] INFO | Wrote curated results plot manifest to results_paper4\master\results_plot_manifest.csv
+[00:31:10] INFO | Wrote curated master figures PDF to results_paper4\master\master_figures.pdf
+[00:31:10] INFO | 
 =============================== PAPER 4 — DONE ===============================
