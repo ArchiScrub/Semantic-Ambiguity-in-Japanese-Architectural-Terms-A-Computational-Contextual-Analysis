@@ -588,10 +588,8 @@ This warning is preserved in the repository for transparency.
 Please cite the associated paper and repository when using these materials:
 
 ```text
-[Author Name(s)]. (2026). Semantic Ambiguity in Japanese Architectural Terms: A Computational Contextual Analysis. GitHub repository: https://github.com/[USERNAME]/Semantic-Ambiguity-in-Japanese-Architectural-Terms-A-Computational-Contextual-Analysis
+Gjata G. and Yamada S. (2026). Semantic Ambiguity in Japanese Architectural Terms: A Computational Contextual Analysis. GitHub repository: https://github.com/ArchiScrub/Semantic-Ambiguity-in-Japanese-Architectural-Terms-A-Computational-Contextual-Analysis
 ```
-
-Replace `[Author Name(s)]` and `[USERNAME]` with the final author names and GitHub username.
 
 ## License
 
